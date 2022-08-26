@@ -1,0 +1,220 @@
+@import "mixins";
+// variables
+
+$blue: hsl(246, 80%, 60%);
+$lightRed: hsl(15, 100%, 70%);
+$softBlue: hsl(195, 74%, 62%);
+$LightRed: hsl(348, 100%, 68%);
+$LimeGreen: hsl(145, 58%, 55%);
+$violet: hsl(264, 64%, 52%);
+$softOrange: hsl(43, 84%, 65%);
+
+$veryDarkBlue: hsl(226, 43%, 10%);
+$darkBlue: hsl(235, 46%, 20%);
+$desaturatedBlue: hsl(235, 45%, 61%);
+$paleBlue: hsl(236, 100%, 87%);
+
+$card-width : 20.75rem; //332px
+$card-height: 13.125rem; //210px
+$stat-height: 10rem; //160px
+
+$rounded: 20px;
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+a, a:hover, a:visited {
+    text-decoration: none;
+    color: $desaturatedBlue;
+}
+
+body {
+    background-color: $veryDarkBlue;
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    // margin-top: 5.125rem; //82px;
+    // margin-bottom: 5.125rem; //82px;
+    height: 100vh;
+    @include respond-above(lg) {
+        flex-direction: row;
+    }
+}
+
+.info-card {
+    width: $card-width;
+    height: $card-height;
+    // background-color: red;
+    border-radius: $rounded;
+    overflow: hidden;
+    background-color: $darkBlue;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    @include respond-above(lg) {
+        min-width: 256px;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+    }
+    .upper {
+        display: flex;
+        height: 8.4375rem; //135px;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+        border-radius: $rounded;
+        background-color: $blue;
+        img {
+            width: 4.625rem; //74px;
+            height: 4.625rem; //74px;
+            border-radius: 100%;
+            border: 3.5px solid white;
+        }
+    
+        .about {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.3rem;
+            // align-items: center;
+            // text-align: center;
+    
+            h3 {
+                font-size: 15px;
+                font-weight: 400;
+                color: $paleBlue;
+            }
+            h1 {
+                font-size: 22px;
+                font-weight: 300;
+                color: #FAFAFA;
+            }
+        }
+    }
+    
+    .lower {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 4.375rem; //70px;
+        border-radius: $rounded;
+        background-color: $darkBlue;
+    
+        a{
+            transition: all 0.3s ease-in-out;
+        }
+        
+        a:hover {
+            color: #FAFAFA;
+        }
+    }
+}
+
+.other {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include respond-above(lg) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.stat-cards {
+    height: $stat-height;
+    width: $card-width;
+    border-radius: $rounded;
+    // background-color: $lightRed;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    // overflow: hidden;
+    @include respond-above(lg) {
+        max-width: 256px;
+        min-height: 247px;
+    }
+    
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    .upper {
+        height: 40px;
+        border-radius: $rounded;
+        position: relative;
+        
+        img {
+            position: absolute;
+            right: 1rem;
+            z-index: 10;
+        }
+    }
+
+    .lower {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        position: absolute;
+        width: $card-width;
+        height: 7.8125rem;
+        border-radius: $rounded;
+        background-color: $darkBlue;
+        z-index: 10000;
+        transition: all 0.3s ease-in-out;
+
+        @include respond-above(lg) {
+            max-width: 256px;
+            min-height: 210px;
+        }
+
+        &:hover {
+            background-color: $desaturatedBlue;
+        }
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            color: #FAFAFA;
+
+            @include respond-above(md) {
+                flex-direction: row;
+            }
+
+            h3 {
+                font-size: 18px;
+                font-weight: 500;
+            }
+            h1 {
+                font-size: 26px;
+                font-weight: 300;
+            }
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            
+            svg {
+                margin-left: auto;
+                margin-bottom: auto;
+            }
+
+            h3 {
+                font-size: 15px;
+                font-weight: 400;
+                color: $paleBlue;
+            }
+        }
+    }
+}
